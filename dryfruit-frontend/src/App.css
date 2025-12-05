@@ -1,14 +1,24 @@
+/* Make the app stretch to full viewport height */
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
 * {
   box-sizing: border-box;
 }
 
 body {
-  margin: 0;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   background-color: #fffaf3;
   color: #2b2b2b;
 }
 
+/* Layout wrapper */
 .page {
   min-height: 100vh;
   display: flex;
@@ -44,16 +54,35 @@ body {
   text-decoration: underline;
 }
 
+/* Main content wrapper */
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
 /* Hero */
 .hero {
   padding: 3rem 1.5rem 2rem;
   text-align: center;
   background: linear-gradient(135deg, #fff3d6, #fbe4c8);
+
+  /* 🔥 Make hero at least full screen minus navbar */
+  min-height: calc(100vh - 56px); /* approx navbar height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-text {
+  max-width: 640px;
+  margin: 0 auto;
 }
 
 .hero-text h1 {
   margin-bottom: 0.75rem;
-  font-size: 2rem;
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  line-height: 1.2;
 }
 
 .hero-text p {
@@ -61,6 +90,7 @@ body {
   max-width: 480px;
   margin-left: auto;
   margin-right: auto;
+  font-size: 0.95rem;
 }
 
 .hero-button {
@@ -208,4 +238,19 @@ select:focus {
   text-align: center;
   font-size: 0.8rem;
   background-color: #f5e0c3;
+}
+
+/* 📱 Mobile tweaks */
+@media (max-width: 600px) {
+  .navbar {
+    padding: 0.6rem 1rem;
+  }
+
+  .hero {
+    padding: 2.5rem 1rem 1.5rem;
+  }
+
+  .order-form {
+    padding: 1.25rem;
+  }
 }
