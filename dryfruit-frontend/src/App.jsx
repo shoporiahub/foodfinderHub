@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Routes, Route, Link, NavLink } from "react-router-dom";
+import { Analytics } from "@vercel/analytics/react";
 import "./App.css";
 
 const PRODUCTS = [
@@ -653,6 +654,9 @@ function App() {
       <footer className="footer">
         © {new Date().getFullYear()} Fresh Dry Fruits. All rights reserved.
       </footer>
+
+      <Analytics />
+
     </div>
   );
 }
