@@ -33,11 +33,35 @@ const orderSchema = new mongoose.Schema(
     name: { type: String, required: true },
     phone: { type: String, required: true },
     address: { type: String, required: true },
-    product: { type: String, required: true },
-    quantity: { type: String, required: true },
+
+    // retail / bulk / wedding
+    orderType: {
+      type: String,
+      enum: ["retail", "bulk", "wedding"],
+      default: "retail",
+    },
+
+    // generic list of items for all order types
+    items: [
+      {
+        product: String,        // e.g. "Kaju"
+        quantityKg: Number,     // e.g. 5
+      },
+    ],
+
+    // optional extra info for special cases
+    shopName: String,          // for shopkeeper
+    eventDate: String,         // for wedding
+    guestsCount: Number,       // for wedding
+    notes: String,             // anything extra
+
+    // old fields kept for backward compatibility (existing data)
+    product: String,
+    quantity: String,
   },
-  { timestamps: true } // adds createdAt, updatedAt
+  { timestamps: true }
 );
+
 
 const Order = mongoose.model("Order", orderSchema);
 
@@ -51,20 +75,51 @@ app.get("/", (req, res) => {
 // Create new order (POST /api/orders)
 app.post("/api/orders", async (req, res) => {
   try {
-    const { name, phone, address, product, quantity } = req.body;
-
-    // Basic validation
-    if (!name || !phone || !address || !product || !quantity) {
-      return res.status(400).json({ message: "All fields are required." });
-    }
-
-    // Create order in DB
-    const newOrder = await Order.create({
+    const {
       name,
       phone,
       address,
       product,
       quantity,
+      orderType,
+      items,
+      shopName,
+      eventDate,
+      guestsCount,
+      notes,
+    } = req.body;
+
+    if (!name || !phone || !address) {
+      return res.status(400).json({ message: "Name, phone and address are required." });
+    }
+
+    // Build items array
+    let finalItems = [];
+
+    if (Array.isArray(items) && items.length > 0) {
+      finalItems = items;
+    } else if (product && quantity) {
+      // fallback for old/simple form
+      finalItems = [{ product, quantityKg: Number(quantity) || 0 }];
+    } else {
+      return res.status(400).json({
+        message: "Please provide at least one item with quantity.",
+      });
+    }
+
+    const newOrder = await Order.create({
+      name,
+      phone,
+      address,
+      orderType: orderType || "retail",
+      items: finalItems,
+      shopName,
+      eventDate,
+      guestsCount,
+      notes,
+      // keep old fields too so nothing breaks
+      product: product || undefined,
+      quantity: quantity || undefined,
     });
 
     console.log("🆕 New order saved:", newOrder);
@@ -78,6 +133,7 @@ app.post("/api/orders", async (req, res) => {
     res.status(500).json({ message: "Server error while creating order." });
   }
 });
+
 
 // Get all orders (GET /api/orders) - for admin usage later
 app.get("/api/orders", async (req, res) => {
