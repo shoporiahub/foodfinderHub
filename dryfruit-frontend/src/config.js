@@ -1,8 +1,38 @@
 // src/config.js
+import kaju from "../src/assets/kaju.png";
+import badam from "../src/assets/badam.png";
+import pista from "../src/assets/pista.png";
+// src/config.js
 export const PRODUCTS = [
-  { id: "cashew", name: "Cashew (Kaju)", description: "Premium whole cashew nuts." },
-  { id: "badam", name: "Badam (Almonds)", description: "High-quality California almonds." },
-  { id: "pista", name: "Pista", description: "Crunchy salted pistachios." },
+  {
+    id: "kaju",
+    name: "Kaju (Cashew)",
+    description: "Rich, creamy cashews – perfect for snacking and sweets.",
+    longDescription:
+      "Our premium kaju is carefully selected, sorted and packed fresh. Ideal for daily eating, festive gifting and making dishes like kaju katli.",
+    image: kaju,
+      pricePerKg: "₹900 / kg",
+  },
+  {
+    id: "badam",
+    name: "Badam (Almonds)",
+    description: "Light, crunchy almonds with amazing nutritional value.",
+    longDescription:
+      "We source high-quality almonds that are perfect for soaking overnight, roasting, or adding to milk and desserts. Great choice for a healthy lifestyle.",
+    image: badam,
+    pricePerKg: "₹800 / kg",
+  },
+  {
+    id: "pista",
+    name: "Pista (Pistachios)",
+    description: "Crunchy, flavourful pistachios – a true snack luxury.",
+    longDescription:
+      "These pistachios are great for snacking, ice cream toppings, sweets and garnishing. A favourite option for wedding hampers and gifting.",
+    image: pista,
+    pricePerKg: "₹1,200 / kg",
+  },
 ];
+
+
 
 export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";

@@ -166,34 +166,68 @@ main {
   margin-bottom: 1.5rem;
 }
 
+/* Grid layout for cards */
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
   max-width: 1000px;
   margin: 0 auto;
 }
 
+/* Card with background image */
 .product-card {
-  background-color: #fff8ec;
-  border-radius: 12px;
-  padding: 1rem;
+  position: relative;
+  width: 100%;
+  /* 👇 This makes the card keep a nice proportion */
+  aspect-ratio: 4 / 3;
+  border-radius: 14px;
+  overflow: hidden;
+
+  /* 👇 Ensures the image fills the whole card */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
   text-align: center;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.product-image-placeholder {
-  width: 80px;
-  height: 80px;
-  border-radius: 999px;
-  background-color: #f1d3a4;
-  margin: 0 auto 0.75rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  font-size: 1.2rem;
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 14px rgba(0, 0, 0, 0.18);
 }
+
+/* Dark overlay so text is readable */
+.product-overlay {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.1));
+  padding: 1rem;
+  width: 100%;
+  color: #ffffff;
+}
+
+.product-overlay h3 {
+  margin: 0;
+  font-size: 1.15rem;
+}
+
+.product-overlay p {
+  margin: 0.35rem 0 0;
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+/* Mobile tweaks */
+@media (max-width: 600px) {
+  .product-card {
+    aspect-ratio: 3 / 4; /* a bit taller on mobile */
+  }
+}
+
 
 /* Order Section */
 .order-section {
@@ -322,4 +356,172 @@ select:focus {
     grid-template-columns: 1fr;
   }
 }
+
+.products-wide {
+  padding: 2.5rem 1.5rem 3rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.products-wide h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* Each big row */
+.product-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+}
+
+/* Left side (content) */
+.product-row-text {
+  flex: 1 1 320px;
+  min-width: 260px;
+}
+
+.product-row-text h3 {
+  font-size: 1.6rem;
+  margin-bottom: 0.5rem;
+}
+
+.product-row-text p {
+  margin: 0.35rem 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.product-long-description {
+  margin-top: 0.5rem;
+}
+
+/* Right side (image) */
+.product-row-image-wrapper {
+  flex: 1 1 320px;
+  min-width: 260px;
+  max-width: 480px;
+}
+
+.product-row-image {
+  width: 100%;
+  height: 100%;
+  max-height: 420px;
+  border-radius: 16px;
+  object-fit: cover;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* Small buttons under text */
+.product-cta {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.small-button,
+.small-outline-button {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.small-button {
+  background-color: #8b5a2b;
+  color: white;
+}
+
+.small-outline-button {
+  border: 1px solid #8b5a2b;
+  color: #8b5a2b;
+  background-color: transparent;
+}
+
+/* Mobile: stack image under text */
+@media (max-width: 768px) {
+  .product-row {
+    flex-direction: column;
+  }
+
+  .product-row-image-wrapper {
+    max-width: 100%;
+  }
+
+  .product-row-image {
+    max-height: 220px;
+  }
+}
+
+.product-detail {
+  padding: 2.5rem 1.5rem 3rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.product-detail-content {
+  flex: 1 1 320px;
+  min-width: 260px;
+}
+
+.product-detail-content h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.product-price {
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  color: #8b5a2b;
+}
+
+.product-detail-text {
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.product-detail-cta {
+  margin-top: 1.25rem;
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.product-detail-image-wrapper {
+  flex: 1 1 320px;
+  min-width: 260px;
+  max-width: 480px;
+}
+
+.product-detail-image {
+  width: 100%;
+  border-radius: 16px;
+  object-fit: contain; /* so your full image shows */
+  background-color: #f7f1e8;
+  padding: 1rem;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 768px) {
+  .product-detail {
+    flex-direction: column;
+  }
+
+  .product-detail-image {
+    max-height: 320px;
+  }
+}
+
+
 

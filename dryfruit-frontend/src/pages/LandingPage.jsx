@@ -9,9 +9,17 @@ export function LandingPage() {
         <div className="hero-text">
           <h1>Premium Dry Fruits for Home, Shops & Weddings</h1>
           <p>
-            Fresh kaju, badam, pista and more – order for home use, your shop, or bulk wedding requirements.
+            Fresh kaju, badam, pista and more – order for home use, your shop, or bulk wedding
+            requirements.
           </p>
-          <div style={{ display: "flex", gap: "0.75rem", justifyContent: "center", flexWrap: "wrap" }}>
+          <div
+            style={{
+              display: "flex",
+              gap: "0.75rem",
+              justifyContent: "center",
+              flexWrap: "wrap",
+            }}
+          >
             <Link to="/home-use" className="hero-button">
               Order for Home
             </Link>
@@ -25,20 +33,39 @@ export function LandingPage() {
         </div>
       </section>
 
-      <section className="products">
+      <section className="products-wide">
         <h2>Our Dry Fruits</h2>
-        <div className="product-grid">
-          {PRODUCTS.map((product) => (
-            <div key={product.id} className="product-card">
-              <div className="product-image-placeholder">
-                <span>{product.name.charAt(0)}</span>
-              </div>
+
+        {PRODUCTS.map((product) => (
+          <div key={product.id} className="product-row">
+            <div className="product-row-text">
               <h3>{product.name}</h3>
               <p>{product.description}</p>
+              {product.longDescription && (
+                <p className="product-long-description">{product.longDescription}</p>
+              )}
+              <div className="product-cta">
+                <Link to={`/${product.id}`} className="small-button">
+                  View Details
+                </Link>
+                <Link to="/home-use" className="small-outline-button">
+                  Order for Home
+                </Link>
+              </div>
             </div>
-          ))}
-        </div>
+
+            <div className="product-row-image-wrapper">
+              <img
+                src={product.image}
+                alt={product.name}
+                className="product-row-image"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        ))}
       </section>
+
     </>
   );
 }

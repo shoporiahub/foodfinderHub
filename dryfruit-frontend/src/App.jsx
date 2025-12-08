@@ -10,6 +10,10 @@ import { WeddingPage } from "./pages/WeddingPage";
 import { TermsPage } from "./pages/TermsPage";
 import { PrivacyPage } from "./pages/PrivacyPage";
 import { ContactPage } from "./pages/Contactpage";
+import { KajuPage } from "./pages/KajuPage";
+import { BadamPage } from "./pages/BadamPage";
+import { PistaPage } from "./pages/PistaPage";
+
 
 function App() {
   return (
@@ -24,7 +28,7 @@ function App() {
           <NavLink to="/" end>
             Home
           </NavLink>
-          
+
           <NavLink to="/contact">
             Contact
           </NavLink>
@@ -47,6 +51,9 @@ function App() {
           <Route path="/terms" element={<TermsPage />} />
           <Route path="/privacy" element={<PrivacyPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/kaju" element={<KajuPage />} />
+          <Route path="/badam" element={<BadamPage />} />
+          <Route path="/pista" element={<PistaPage />} />
         </Routes>
       </main>
 
