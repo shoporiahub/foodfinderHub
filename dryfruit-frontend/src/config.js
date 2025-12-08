@@ -2,7 +2,6 @@
 export const PRODUCTS = [
   { id: "cashew", name: "Cashew (Kaju)", description: "Premium whole cashew nuts." },
   { id: "badam", name: "Badam (Almonds)", description: "High-quality California almonds." },
-  { id: "kaju", name: "Kaju", description: "Roasted kaju with rich taste." },
   { id: "pista", name: "Pista", description: "Crunchy salted pistachios." },
 ];
 

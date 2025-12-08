@@ -26,33 +26,71 @@ body {
 }
 
 /* Navbar */
+/* Navbar base style */
 .navbar {
-  position: sticky;
-  top: 0;
-  z-index: 10;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.75rem 1.5rem;
-  background-color: #f5e0c3;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  padding: 0.9rem 1.2rem;
+  background: #f8f4ec;
+  border-bottom: 1px solid #e3dcd2;
+  position: sticky;
+  top: 0;
+  z-index: 50;
 }
 
-.logo {
+/* Brand name */
+.brand {
+  font-size: 1.2rem;
   font-weight: 700;
-  font-size: 1.1rem;
-}
-
-.nav-links a {
-  margin-left: 1rem;
+  color: #3a281a;
   text-decoration: none;
-  color: #4a341f;
-  font-size: 0.95rem;
 }
 
-.nav-links a:hover {
+/* Right links */
+.nav-right a {
+  margin-left: 1rem;
+  font-size: 1rem;
+  text-decoration: none;
+  color: #3a281a;
+  font-weight: 600;
+}
+
+.nav-right a.active {
   text-decoration: underline;
 }
+
+/* Hide all extra links on mobile */
+@media (max-width: 768px) {
+  .nav-right a {
+    font-size: 0.95rem;
+  }
+}
+
+/* Desktop view — show all menu links */
+@media (min-width: 769px) {
+  .nav-right {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  /* Show ALL links on desktop */
+  .nav-right a {
+    display: inline-block;
+  }
+}
+
+/* Mobile view — show ONLY Home and Home Use */
+@media (max-width: 768px) {
+  .nav-right a:nth-child(n+3) {
+    display: none; /* Hides Shopkeeper + Wedding */
+  }
+
+  .navbar {
+    padding: 0.8rem 1rem;
+  }
+}
+
 
 /* Main content wrapper */
 main {
@@ -65,18 +103,27 @@ main {
 .hero {
   padding: 3rem 1.5rem 2rem;
   text-align: center;
-  background: linear-gradient(135deg, #fff3d6, #fbe4c8);
 
-  /* 🔥 Make hero at least full screen minus navbar */
-  min-height: calc(100vh - 56px); /* approx navbar height */
+  /* 🔥 Background image with overlay */
+  background-image:
+    linear-gradient(135deg, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.35)),
+    url("/src/assets/dryfruit.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  /* Full-height hero */
+  min-height: calc(100vh - 56px);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+/* Make text readable on top of image */
 .hero-text {
   max-width: 640px;
   margin: 0 auto;
+  color: #ffffff;
 }
 
 .hero-text h1 {
@@ -93,15 +140,17 @@ main {
   font-size: 0.95rem;
 }
 
+/* Button can stay as is, but this pops better on photo */
 .hero-button {
   display: inline-block;
   padding: 0.75rem 1.5rem;
   border-radius: 999px;
-  background-color: #8b5a2b;
-  color: white;
+  background-color: #f8a92a;
+  color: #2b1808;
   text-decoration: none;
   font-weight: 600;
 }
+
 
 .hero-button:hover {
   opacity: 0.92;
@@ -254,3 +303,23 @@ select:focus {
     padding: 1.25rem;
   }
 }
+.contact-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1.5fr);
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.contact-info {
+  background-color: #fff8ec;
+  border-radius: 12px;
+  padding: 1.25rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+@media (max-width: 768px) {
+  .contact-layout {
+    grid-template-columns: 1fr;
+  }
+}
+

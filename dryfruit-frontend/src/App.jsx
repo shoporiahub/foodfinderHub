@@ -9,6 +9,7 @@ import { ShopkeeperPage } from "./pages/ShopkeeperPage";
 import { WeddingPage } from "./pages/WeddingPage";
 import { TermsPage } from "./pages/TermsPage";
 import { PrivacyPage } from "./pages/PrivacyPage";
+import { ContactPage } from "./pages/Contactpage";
 
 function App() {
   return (
@@ -16,18 +17,26 @@ function App() {
       <header className="navbar">
         <div className="logo">
           <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
-            Fresh Dry Fruits
+            Food Finder Hub
           </Link>
         </div>
-        <nav className="nav-links">
+        <nav className="nav-right">
           <NavLink to="/" end>
             Home
           </NavLink>
-          <NavLink to="/home-use">Home Use</NavLink>
-          <NavLink to="/shopkeeper">Shopkeeper</NavLink>
-          <NavLink to="/wedding">Wedding</NavLink>
+          
+          <NavLink to="/contact">
+            Contact
+          </NavLink>
+          {/* <NavLink to="/shopkeeper">
+            Shopkeeper
+          </NavLink>
+          <NavLink to="/wedding">
+            Wedding
+          </NavLink> */}
         </nav>
       </header>
+
 
       <main>
         <Routes>
@@ -37,6 +46,7 @@ function App() {
           <Route path="/wedding" element={<WeddingPage />} />
           <Route path="/terms" element={<TermsPage />} />
           <Route path="/privacy" element={<PrivacyPage />} />
+          <Route path="/contact" element={<ContactPage />} />
         </Routes>
       </main>
 
