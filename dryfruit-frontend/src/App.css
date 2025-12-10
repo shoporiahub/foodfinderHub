@@ -235,7 +235,7 @@ main {
 .order-section {
   padding: 2rem 1.5rem 3rem;
   background-color: #fff3df;
-   /* 👇 Add background image here */
+  /* 👇 Add background image here */
   background-image: url("/src/assets/bg.png");
   background-size: cover;
   /* to fill area */
@@ -472,7 +472,8 @@ select:focus {
 /* 📱 Mobile first: column, carousel on top, auto height */
 .product-detail {
   display: flex;
-  flex-direction: column;      /* carousel then text */
+  flex-direction: column;
+  /* carousel then text */
   gap: 2rem;
   /* padding: 2.5rem 1.5rem 3rem; */
   align-items: center;
@@ -490,22 +491,29 @@ select:focus {
 /* 🖥 Desktop: row, full-screen background */
 @media (min-width: 768px) {
   .product-detail {
-    flex-direction: row;       /* text left, carousel right */
+    flex-direction: row;
+    /* text left, carousel right */
     justify-content: space-between;
     align-items: center;
-    min-height: 100vh;         /* 👈 fills the screen height */
+    min-height: 100vh;
+    /* 👈 fills the screen height */
   }
 
   .product-detail-image-wrapper {
-    order: 2;                  /* carousel on the right */
+    order: 1;
+    /* carousel on the right */
     flex: 1;
     max-width: 480px;
   }
 
   .product-detail-content {
-    order: 1;                  /* text on the left */
+    order: 2;
+    /* text on the left */
     flex: 1;
     max-width: 520px;
+    padding-left: 1.5rem;
+    /* 👈 Add padding for mobile */
+    padding-right: 1.5rem;
   }
 }
 
@@ -513,6 +521,8 @@ select:focus {
 .product-detail-content {
   flex: 1 1 320px;
   min-width: 260px;
+  padding-left: 1.5rem;   /* 👈 Add padding for mobile */
+  padding-right: 1.5rem; 
 }
 
 .product-detail-content h1 {
@@ -554,6 +564,32 @@ select:focus {
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
 }
 
+@media (min-width: 768px) {
+  .product-detail {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 100vh;
+
+    padding-left: 4rem;
+    /* 👈 Add left padding */
+    padding-right: 4rem;
+    /* 👈 Add right padding */
+  }
+
+  .product-detail-image-wrapper {
+    order: 1;
+    flex: 1;
+    max-width: 480px;
+  }
+
+  .product-detail-content {
+    order: 2;
+    flex: 1;
+    max-width: 520px;
+  }
+}
+
 
 /* Home use page background */
 .home-use-page {
@@ -563,7 +599,7 @@ select:focus {
   flex-direction: column;
   align-items: center;
   background: radial-gradient(circle at top, #ffeecb, #ffe5c0 40%, #fde8d1 70%, #fbe3c0 100%);
-   /* 👇 Add background image here */
+  /* 👇 Add background image here */
   background-image: url("/src/assets/bg.png");
   background-size: cover;
   /* to fill area */
@@ -861,6 +897,7 @@ select:focus {
   0% {
     transform: translateX(0);
   }
+
   100% {
     transform: translateX(-50%);
   }
@@ -870,7 +907,8 @@ select:focus {
 @media (max-width: 600px) {
   .ticker-inner {
     gap: 1.5rem;
-    animation-duration: 22s; /* slightly slower on mobile */
+    animation-duration: 22s;
+    /* slightly slower on mobile */
   }
 
   .ticker-item {
@@ -887,7 +925,6 @@ select:focus {
   position: relative;
   width: 100%;
   overflow: hidden;
-  background-color: #f7f1e8;
 }
 
 .carousel-image {
@@ -939,4 +976,3 @@ select:focus {
 .carousel-dot.active {
   background: #8b5a2b;
 }
-

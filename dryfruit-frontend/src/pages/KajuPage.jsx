@@ -10,9 +10,11 @@ export function KajuPage() {
 
   return (
     <section className="product-detail">
+      
       <div className="product-detail-image-wrapper">
         <ImageCarousel images={kaju.images} />
       </div>
+
       <div className="product-detail-content">
         <h1>{kaju.name}</h1>
         <p className="product-price">{kaju.pricePerKg}</p>
