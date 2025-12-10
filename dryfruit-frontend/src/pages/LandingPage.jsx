@@ -34,7 +34,6 @@ export function LandingPage() {
       </section>
 
       <section className="products-wide">
-        <h2>Our Dry Fruits</h2>
 
         {PRODUCTS.map((product) => (
           <div key={product.id} className="product-row">

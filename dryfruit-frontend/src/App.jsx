@@ -13,32 +13,35 @@ import { ContactPage } from "./pages/Contactpage";
 import { KajuPage } from "./pages/KajuPage";
 import { BadamPage } from "./pages/BadamPage";
 import { PistaPage } from "./pages/PistaPage";
-
+import wellnours from "./assets/wellnours.png";
 
 function App() {
   return (
     <div className="page">
       <header className="navbar">
         <div className="logo">
+          <NavLink to="/" end className="nav-icon-link">
+            <img src={wellnours} alt="Home" className="nav-icon" />
+          </NavLink>
           <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
-            Food Finder Hub
+            Wellnours
           </Link>
+          
         </div>
         <nav className="nav-right">
-          <NavLink to="/" end>
-            Home
-          </NavLink>
 
           <NavLink to="/contact">
             Contact
           </NavLink>
-          {/* <NavLink to="/shopkeeper">
+        </nav>
+
+        {/* <NavLink to="/shopkeeper">
             Shopkeeper
           </NavLink>
           <NavLink to="/wedding">
             Wedding
           </NavLink> */}
-        </nav>
+
       </header>
 
 

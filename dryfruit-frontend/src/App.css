@@ -83,7 +83,8 @@ body {
 /* Mobile view — show ONLY Home and Home Use */
 @media (max-width: 768px) {
   .nav-right a:nth-child(n+3) {
-    display: none; /* Hides Shopkeeper + Wedding */
+    display: none;
+    /* Hides Shopkeeper + Wedding */
   }
 
   .navbar {
@@ -113,7 +114,7 @@ main {
   background-repeat: no-repeat;
 
   /* Full-height hero */
-  min-height: calc(100vh - 56px);
+  min-height: calc(100vh - 150px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -224,7 +225,8 @@ main {
 /* Mobile tweaks */
 @media (max-width: 600px) {
   .product-card {
-    aspect-ratio: 3 / 4; /* a bit taller on mobile */
+    aspect-ratio: 3 / 4;
+    /* a bit taller on mobile */
   }
 }
 
@@ -337,6 +339,7 @@ select:focus {
     padding: 1.25rem;
   }
 }
+
 .contact-layout {
   display: grid;
   grid-template-columns: minmax(0, 2fr) minmax(0, 1.5fr);
@@ -359,8 +362,7 @@ select:focus {
 
 .products-wide {
   padding: 2.5rem 1.5rem 3rem;
-  max-width: 1100px;
-  margin: 0 auto;
+  /* margin: 0 auto; */
 }
 
 .products-wide h2 {
@@ -507,7 +509,8 @@ select:focus {
 .product-detail-image {
   width: 100%;
   border-radius: 16px;
-  object-fit: contain; /* so your full image shows */
+  object-fit: contain;
+  /* so your full image shows */
   background-color: #f7f1e8;
   padding: 1rem;
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
@@ -523,5 +526,261 @@ select:focus {
   }
 }
 
+/* Home use page background */
+.home-use-page {
+  min-height: 100vh;
+  padding: 1.5rem 1rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: radial-gradient(circle at top, #ffeecb, #ffe5c0 40%, #fde8d1 70%, #fbe3c0 100%);
+}
+
+/* Banner at top */
+.home-banner {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: 999px;
+  background-color: #ffd27a;
+  color: #4b2b09;
+  font-size: 0.9rem;
+  font-weight: 600;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.home-banner-icon {
+  font-size: 1.1rem;
+}
+
+/* Main card */
+.home-card {
+  width: 100%;
+  max-width: 430px;
+  background-color: #ffffff;
+  border-radius: 24px;
+  padding: 1.8rem 1.5rem 1.8rem;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.12);
+}
+
+.home-card-title {
+  text-align: center;
+  margin: 0 0 0.25rem;
+  font-size: 1.5rem;
+}
+
+.home-card-subtitle {
+  text-align: center;
+  margin: 0 0 1.5rem;
+  font-size: 0.92rem;
+  color: #6b7280;
+}
+
+/* Form fields reuse .form-row styles, but we refine them a bit */
+.home-card .form-row {
+  margin-bottom: 1rem;
+}
+
+.home-card label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 0.35rem;
+}
+
+.home-card input,
+.home-card textarea {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  font-size: 0.9rem;
+}
+
+.home-card input::placeholder,
+.home-card textarea::placeholder {
+  color: #9ca3af;
+}
+
+.home-card input:focus,
+.home-card textarea:focus {
+  outline: none;
+  border-color: #f59e0b;
+  box-shadow: 0 0 0 1px rgba(245, 158, 11, 0.35);
+}
+
+.label-with-space {
+  display: block;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Fruit tiles grid */
+.fruit-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.6rem;
+}
+
+.fruit-tile {
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  background-color: #ffffff;
+  padding: 0.55rem 0.4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease,
+    transform 0.1s ease;
+}
+
+.fruit-tile-image {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.fruit-tile-name {
+  font-weight: 600;
+}
+
+.fruit-tile-selected {
+  font-size: 0.7rem;
+  color: #a16207;
+}
+
+.fruit-tile.selected {
+  border-color: #f59e0b;
+  background-color: #fff7e5;
+  box-shadow: 0 0 0 1px rgba(245, 158, 11, 0.35);
+  transform: translateY(-1px);
+}
+
+/* Quantity row */
+.quantity-row {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+}
+
+.qty-btn {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background-color: #f9fafb;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.qty-value {
+  min-width: 50px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Submit button */
+.home-submit {
+  margin-top: 1rem;
+  width: 100%;
+  padding: 0.9rem;
+  border-radius: 999px;
+  border: none;
+  background-color: #a96a2b;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.98rem;
+  box-shadow: 0 8px 20px rgba(169, 106, 43, 0.45);
+}
+
+.home-submit:disabled {
+  opacity: 0.8;
+  box-shadow: none;
+}
+
+/* Status message reuse existing classes */
+.status-message.success {
+  background-color: #ecfdf5;
+  color: #166534;
+}
+
+.status-message.error {
+  background-color: #fef2f2;
+  color: #b91c1c;
+}
+
+/* Slight tweak on very small screens */
+@media (max-width: 400px) {
+  .home-card {
+    padding: 1.4rem 1.1rem 1.5rem;
+  }
+
+  .fruit-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.nav-icon-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-icon {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+  opacity: 0.85;
+  transition: opacity 0.2s ease;
+}
+
+.nav-icon-link.active .nav-icon {
+  opacity: 1;
+}
+
+.nav-icon-link:hover .nav-icon {
+  opacity: 1;
+}
+
+/* Mobile tweaks */
+@media (max-width: 768px) {
+  .nav-icon {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+.logo {
+  display: flex;
+
+}
+
+.products-wide {
+  padding: 2.5rem 1.5rem 3rem;
+  margin: 0 auto;
+  width: 100%;
+  margin-top: 20px;
 
 
+  /* 👇 Add background image here */
+  background-image: url("/src/assets/bg.png");
+  background-size: cover;
+  /* to fill area */
+  background-position: center;
+  /* keep it centered */
+  background-repeat: no-repeat;
+  /* no repeating */
+  border-radius: 18px;
+  /* optional */
+}
