@@ -1,6 +1,6 @@
 // src/pages/LandingPage.jsx
 import { Link } from "react-router-dom";
-import { PRODUCTS } from "../config";
+import { PRODUCTS,LOOP_TEXTS } from "../config";
 
 export function LandingPage() {
   return (
@@ -29,6 +29,24 @@ export function LandingPage() {
             <Link to="/wedding" className="hero-button">
               Wedding Order
             </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="ticker-section">
+        <div className="ticker">
+          <div className="ticker-inner">
+            {LOOP_TEXTS.map((text, idx) => (
+              <span key={`loop1-${idx}`} className="ticker-item">
+                {text}
+              </span>
+            ))}
+            {/* duplicate once so it loops seamlessly */}
+            {LOOP_TEXTS.map((text, idx) => (
+              <span key={`loop2-${idx}`} className="ticker-item">
+                {text}
+              </span>
+            ))}
           </div>
         </div>
       </section>

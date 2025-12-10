@@ -11,7 +11,8 @@ export const PRODUCTS = [
     longDescription:
       "Our premium kaju is carefully selected, sorted and packed fresh. Ideal for daily eating, festive gifting and making dishes like kaju katli.",
     image: kaju,
-      pricePerKg: "₹900 / kg",
+    images: [kaju, badam, pista],
+    pricePerKg: "₹900 / kg",
   },
   {
     id: "badam",
@@ -20,6 +21,7 @@ export const PRODUCTS = [
     longDescription:
       "We source high-quality almonds that are perfect for soaking overnight, roasting, or adding to milk and desserts. Great choice for a healthy lifestyle.",
     image: badam,
+    images: [kaju, badam, pista],
     pricePerKg: "₹800 / kg",
   },
   {
@@ -29,8 +31,16 @@ export const PRODUCTS = [
     longDescription:
       "These pistachios are great for snacking, ice cream toppings, sweets and garnishing. A favourite option for wedding hampers and gifting.",
     image: pista,
+    images: [kaju, badam, pista],
+
     pricePerKg: "₹1,200 / kg",
   },
+];
+
+export const LOOP_TEXTS = [
+  "Fresh Dry Fruits Delivered Fast",
+  "Get Delivery in 1 Hour in Your Area",
+  "Order for Home, Shop & Weddings",
 ];
 
 

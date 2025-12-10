@@ -1,6 +1,7 @@
 // src/pages/BadamPage.jsx
 import { Link } from "react-router-dom";
 import { PRODUCTS } from "../config";
+import ImageCarousel from "../components/ImageCarousal";
 
 export function BadamPage() {
   const badam = PRODUCTS.find((p) => p.id === "badam");
@@ -9,6 +10,9 @@ export function BadamPage() {
 
   return (
     <section className="product-detail">
+      <div className="product-detail-image-wrapper">
+        <ImageCarousel images={badam.images} />
+      </div>
       <div className="product-detail-content">
         <h1>{badam.name}</h1>
         <p className="product-price">{badam.pricePerKg}</p>
@@ -28,9 +32,6 @@ export function BadamPage() {
         </div>
       </div>
 
-      <div className="product-detail-image-wrapper">
-        <img src={badam.image} alt={badam.name} className="product-detail-image" />
-      </div>
     </section>
   );
 }

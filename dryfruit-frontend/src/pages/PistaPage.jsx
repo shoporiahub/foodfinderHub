@@ -1,7 +1,7 @@
 // src/pages/PistaPage.jsx
 import { Link } from "react-router-dom";
 import { PRODUCTS } from "../config";
-
+import ImageCarousel from "../components/ImageCarousal";
 export function PistaPage() {
   const pista = PRODUCTS.find((p) => p.id === "pista");
 
@@ -9,6 +9,9 @@ export function PistaPage() {
 
   return (
     <section className="product-detail">
+      <div className="product-detail-image-wrapper">
+              <ImageCarousel images={pista.images} />
+            </div>
       <div className="product-detail-content">
         <h1>{pista.name}</h1>
         <p className="product-price">{pista.pricePerKg}</p>
@@ -28,9 +31,6 @@ export function PistaPage() {
         </div>
       </div>
 
-      <div className="product-detail-image-wrapper">
-        <img src={pista.image} alt={pista.name} className="product-detail-image" />
-      </div>
     </section>
   );
 }

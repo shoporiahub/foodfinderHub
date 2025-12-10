@@ -235,6 +235,14 @@ main {
 .order-section {
   padding: 2rem 1.5rem 3rem;
   background-color: #fff3df;
+   /* 👇 Add background image here */
+  background-image: url("/src/assets/bg.png");
+  background-size: cover;
+  /* to fill area */
+  background-position: center;
+  /* keep it centered */
+  background-repeat: no-repeat;
+  /* no repeating */
 }
 
 .order-section h2 {
@@ -461,16 +469,47 @@ select:focus {
   }
 }
 
+/* 📱 Mobile first: column, carousel on top, auto height */
 .product-detail {
-  padding: 2.5rem 1.5rem 3rem;
-  max-width: 1100px;
-  margin: 0 auto;
   display: flex;
+  flex-direction: column;      /* carousel then text */
   gap: 2rem;
-  flex-wrap: wrap;
+  /* padding: 2.5rem 1.5rem 3rem; */
   align-items: center;
+  width: 100%;
+
+  background-image: url("/src/assets/bg.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  /* let mobile grow naturally */
+  min-height: auto;
 }
 
+/* 🖥 Desktop: row, full-screen background */
+@media (min-width: 768px) {
+  .product-detail {
+    flex-direction: row;       /* text left, carousel right */
+    justify-content: space-between;
+    align-items: center;
+    min-height: 100vh;         /* 👈 fills the screen height */
+  }
+
+  .product-detail-image-wrapper {
+    order: 2;                  /* carousel on the right */
+    flex: 1;
+    max-width: 480px;
+  }
+
+  .product-detail-content {
+    order: 1;                  /* text on the left */
+    flex: 1;
+    max-width: 520px;
+  }
+}
+
+/* keep your existing inner styles */
 .product-detail-content {
   flex: 1 1 320px;
   min-width: 260px;
@@ -510,21 +549,11 @@ select:focus {
   width: 100%;
   border-radius: 16px;
   object-fit: contain;
-  /* so your full image shows */
   background-color: #f7f1e8;
   padding: 1rem;
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
 }
 
-@media (max-width: 768px) {
-  .product-detail {
-    flex-direction: column;
-  }
-
-  .product-detail-image {
-    max-height: 320px;
-  }
-}
 
 /* Home use page background */
 .home-use-page {
@@ -534,6 +563,14 @@ select:focus {
   flex-direction: column;
   align-items: center;
   background: radial-gradient(circle at top, #ffeecb, #ffe5c0 40%, #fde8d1 70%, #fbe3c0 100%);
+   /* 👇 Add background image here */
+  background-image: url("/src/assets/bg.png");
+  background-size: cover;
+  /* to fill area */
+  background-position: center;
+  /* keep it centered */
+  background-repeat: no-repeat;
+  /* no repeating */
 }
 
 /* Banner at top */
@@ -770,8 +807,6 @@ select:focus {
   padding: 2.5rem 1.5rem 3rem;
   margin: 0 auto;
   width: 100%;
-  margin-top: 20px;
-
 
   /* 👇 Add background image here */
   background-image: url("/src/assets/bg.png");
@@ -784,3 +819,124 @@ select:focus {
   border-radius: 18px;
   /* optional */
 }
+
+/* Looping text strip */
+.ticker-section {
+  width: 100%;
+  padding: 0.75rem 0;
+  background: #fff4dd;
+  border-top: 1px solid #f2d9a6;
+  border-bottom: 1px solid #f2d9a6;
+  overflow: hidden;
+}
+
+.ticker {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.ticker-inner {
+  display: inline-flex;
+  align-items: center;
+  gap: 2.5rem;
+  padding-left: 100%;
+  /* 👇 This moves the whole row from right to left in a loop */
+  animation: ticker-scroll 18s linear infinite;
+}
+
+.ticker-item {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #7a4b1a;
+  text-transform: none;
+}
+
+/* Pause on hover (optional) */
+.ticker-section:hover .ticker-inner {
+  animation-play-state: paused;
+}
+
+/* Keyframes for the infinite loop */
+@keyframes ticker-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Mobile tweak */
+@media (max-width: 600px) {
+  .ticker-inner {
+    gap: 1.5rem;
+    animation-duration: 22s; /* slightly slower on mobile */
+  }
+
+  .ticker-item {
+    font-size: 0.8rem;
+  }
+}
+
+.carousel-container {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.carousel-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background-color: #f7f1e8;
+}
+
+.carousel-image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Arrows */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.85);
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 0;
+}
+
+.carousel-btn.left {
+  left: 10px;
+}
+
+.carousel-btn.right {
+  right: 10px;
+}
+
+/* Dots */
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.carousel-dot {
+  width: 10px;
+  height: 10px;
+  background: #c9c8c8;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.carousel-dot.active {
+  background: #8b5a2b;
+}
+
